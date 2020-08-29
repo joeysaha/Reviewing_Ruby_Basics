@@ -66,6 +66,68 @@ def print_plays(year_start, year_end, hash)
 end
 # puts print_plays(1600, 1605, shakes_hash)
 print_plays(1600, 1605, shakes_hash).each { |k,v|
-  puts "#{v["title"].ljust(30)} #{v["finished"]}"
+  puts "#{v["title"].ljust(50)} #{v["finished"]}"
 }
 # ljust left justifies with a min length of 30 characters for spacing
+puts divider("_")
+
+puts "It's true: 1 is less than 2" if 1 < 2
+puts divider("!")
+
+class Blurb
+  attr_accessor :content, :time, :mood
+
+  def initialize(mood, content="")
+    @time = Time.now
+    @content = content[0..39]
+    @mood = mood
+  end
+
+  def moodify
+    if @mood == :sad
+      return ":-("
+    elsif @mood == :happy
+      return ":-)"
+    elsif @mood == :surprised
+      return ":-O"
+    end
+    ":-|"
+  end
+end
+# puts Blurb.class
+# blurb1 = Blurb.new
+# # puts blurb1
+# blurb1.content = "Today Mount Hood Was Stolen!"
+# blurb1.time = Time.now
+# blurb1.mood = :sick
+# puts blurb1
+
+blurb2 = Blurb.new(:mad, "sleepy room dreams forever")
+puts blurb2.time
+divider("?")
+
+class Blurbalizer
+  def initialize(title)
+    @title = title
+    @blurbs = []
+  end
+
+  def add_blurb(mood, content)
+    @blurbs << Blurb.new(mood, content)
+  end
+
+  def show_timeline
+    puts "Blurbify: #{@title} contains #{@blurbs.count} Blurbs"
+
+    @blurbs.sort_by { |t| t.time }.reverse.each { |t| puts "#{t.content.ljust(30)} #{t.moodify.ljust(20)} #{t.time}"}
+  end
+end
+
+myapp = Blurbalizer.new("The Big Blurb")
+# puts myapp
+myapp.add_blurb(:happy, "Add Blurb here")
+myapp.add_blurb(:sad, "something")
+myapp.add_blurb(:surprised, "duplicitous")
+myapp.add_blurb(:mad, "waaahhh")
+
+myapp.show_timeline
