@@ -1,0 +1,1 @@
+MVC - separation of the presentation layer (what the user of the app sees in the browser/mobile device) and the business logic or back-end (invisible layer)

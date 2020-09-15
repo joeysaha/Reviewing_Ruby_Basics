@@ -1,0 +1,4 @@
+Root Route - localhost:3000
+  route it goes to as default when you access any website
+  google.com routes to root
+  

@@ -1,0 +1,2 @@
+Rails was developed by David Heinemeier Hansson (DHH).
+Devise Gem... makes things easier (used later)
